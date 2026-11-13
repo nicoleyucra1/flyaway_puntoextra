@@ -10,7 +10,7 @@ export interface RegisterRequest {
     password: string;
 }
 
-export interface IdUsuario {
+export interface IdResponse {
     id: number;
 }
 
@@ -25,14 +25,6 @@ export interface AuthResponse {
     token: string; 
 }
 
-export interface Current {
-    id: number; 
-    username: string; 
-    email: string; 
-    firstName: string;
-    role: string;
-}
-
 export interface User {
     id: number; 
     username: string; 
@@ -44,6 +36,7 @@ export interface User {
 
 
 export interface Flight { 
+    id: number;
     airlineName: string;
     flightNumber: string;
     estDepartureTime: string;
@@ -51,10 +44,23 @@ export interface Flight {
     availableSeats: number; 
 }
 
-export interface ManyFlights {
-    input: Flight[]
+export interface FlightSearchResponse {
+    items: Flight[]
 }
 
-export interface FlightById {
+export interface BookFlightRequest {
+    flightId: number;
+}
+
+export interface Booking {
     id: number;
+    bookingDate: string;
+    flightId: number;
+    flightNumber: string;
+    airlineName: string;
+    estDepartureTime: string;
+    estArrivalTime: string;
+    customerId: number;
+    customerFirstName: string;
+    customerLastName: string; 
 }
