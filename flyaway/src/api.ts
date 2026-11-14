@@ -6,6 +6,7 @@ api.interceptors.request.use((config) => {
     if (token) config.headers.Authorization = `Bearer ${token}`;
     return config;
 });
+
 api.interceptors.response.use(
     (res) => res,
     (error) => {
@@ -18,9 +19,10 @@ api.interceptors.response.use(
         return Promise.reject(error);
     }
 );
+
 export function getErrorMessage(error: unknown): string {
     if (!axios.isAxiosError(error)) return 'Error inesperado';
     if (!error.response) return 'No se pudo conectar con el servidor';
-    const data = error.response.data as { message?: string; error?: string };
-    return data?.message ?? data?.error ?? `Error ${error.response.status}`;
+    const data = error.response.data as { message?: string; error?: string ; detail?: string};
+    return data?.detail?? data?.message ?? data?.error ?? `Error ${error.response.status}`;
 }

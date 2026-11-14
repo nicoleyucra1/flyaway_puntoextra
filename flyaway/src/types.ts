@@ -64,3 +64,10 @@ export interface Booking {
     customerFirstName: string;
     customerLastName: string; 
 }
+
+export interface FlightsSearchParams{
+    flightNumber?: string;
+    airlineName?:string;
+    estDepartureTimeFrom?: string;
+    estDepartureTimeTo?: string;
+}
